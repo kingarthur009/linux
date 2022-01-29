@@ -1,0 +1,4 @@
+O que é filesystems ? 
+São os sistemas de arquivos, no gnu/linux temos ext4,ext2,brtfs,... 
+Serve para controlar como os dados são armazenados e recuperados ! 
+Alguns sistemas de arquivos tem suporte a "journaling" ! 
