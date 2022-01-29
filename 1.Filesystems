@@ -1,26 +1,31 @@
 1.INTRODUÇÃO !
 
-Os sistema operacionais podem usam vários sistema de arquivos de acordo com o seu objetivo ! 
+Quando estamos instalando gnu/linux precisamos escolher qual sistema de arquivo usar, o linux suporta vários !  
 
 No linux temos ext4 , ext3, brtfs, no windows tem ntfs e fat ! 
 
 Cada sistema de arquivos tem sua vantagem e desvantagem !
 
-Umas das funcionalidades é que serve para controlar como os dados são armazenados e recuperados ! 
+Umas das funcionalidades é que serve para controlar como os dados são armazenados e recuperados e acessados ! 
 
 Alguns sistemas de arquivos tem suporte a "journaling", recurso que permiti recuperar um sistema em uma velocidade muito maior ! 
-
-Ele trabalha como se fosse uma log ou agenda assim antes dos dados serem escritos eles são "agendados" (gravadas no journal) para futura escrita, 
-assim se ocorrer um crash ele possui todas a informações necessárias no journal para a recuperação dos mesmos. 
 
 Antes de ter o sistema de arquivos(ext4) é preciso particionar o disco(dividir), ou seja, preparar o terreno, cada partição pode ter um sistema de arquivos 
 diferente, e cada partição é isolada, não interfere nas outras partições ! 
 
-Sempre lembrar: Primeiro é preciso particionar(fdisk) e depois formatar(mkfs) , não se esquece de montar(mount)! 
+O diretório padrão dos dispositivo é -> /dev/sd? 
+
+O módulo do kernel precisa conhecer o sistema de arquivo !  
+
+Sempre lembrar: Primeiro é preciso particionar(fdisk), depois formatar(mkfs) a partição, e por último Montar(mount)! 
 
 2.PARTICIONAMENTO DO DISCO ! 
 
-Partições padroẽs: 
+Partição primária -> usadas para armazenar o sistema de arquivos ! 
+Partição Estendida -> usada para "abrigar" outras partições lógicas
+Partição lógica -> são partições criadas dentro das partições entendida, geralmente usada para armazena o sistema de arquivo ! 
+
+Partições padroẽs: bios x uefi
 dos/MBR(master boot record) -> antigo, caindo em desuso, apenas pode criar 4 partições primárias, porém com a última partição é possível 
 criar mais partições lógicas ! 
 
@@ -34,12 +39,13 @@ Geralmente a primeira partição é pequena , pois armazena o 'bootloader'(grub)
 Programa usado para preparar o dispositivo(terreno) é o fdisk (cli)!
 
 Para ver as partições:
-sudo fdisk -l 
+fdisk -l 
 cat /proc/partitions
+ls -l /dev/disk/by-*
 
 3.MONTAGEM
 
-Montar um dispositivo é importante pois o usuário vai poder acessar o dispositivo e seu conteúdo ! 
+Montar um dispositivo é importante pois o usuário vai poder acessar o dispositivo e seu conteúdo, ou seja torna o dispositivo acessível ! 
 
 Com o comando mount é possível ver todas as partições montandas ! 
 
@@ -57,6 +63,23 @@ O linux tem um estrutura de diretórios interessante, pois é como se fosse uma 
 
 Outra característica é que os arquivos tem locais pré-definidos, os arquivos de logs tem uma pasta específica , os usuários também , arquivos de con-
 figuração , ....
+
+
+
+Os diretórios tem bits de permissão de acesso ! 
+
+Comandos:
+
+Para verificar a integridade do dsico, digite -> fsck.ext4 (disositivo)
+fdisk -l 
+mkfs.ext4 ()
+dumpe2fs
+du -shc /* | sort 
+cat /proc/cpuinfo
+
+
+
+
 
 
 
