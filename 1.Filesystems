@@ -1,4 +1,76 @@
-O que é filesystems ? 
-São os sistemas de arquivos, no gnu/linux temos ext4,ext2,brtfs,... 
-Serve para controlar como os dados são armazenados e recuperados ! 
-Alguns sistemas de arquivos tem suporte a "journaling" ! 
+1.INTRODUÇÃO !
+
+Os sistema operacionais podem usam vários sistema de arquivos de acordo com o seu objetivo ! 
+
+No linux temos ext4 , ext3, brtfs, no windows tem ntfs e fat ! 
+
+Cada sistema de arquivos tem sua vantagem e desvantagem !
+
+Umas das funcionalidades é que serve para controlar como os dados são armazenados e recuperados ! 
+
+Alguns sistemas de arquivos tem suporte a "journaling", recurso que permiti recuperar um sistema em uma velocidade muito maior ! 
+
+Ele trabalha como se fosse uma log ou agenda assim antes dos dados serem escritos eles são "agendados" (gravadas no journal) para futura escrita, 
+assim se ocorrer um crash ele possui todas a informações necessárias no journal para a recuperação dos mesmos. 
+
+Antes de ter o sistema de arquivos(ext4) é preciso particionar o disco(dividir), ou seja, preparar o terreno, cada partição pode ter um sistema de arquivos 
+diferente, e cada partição é isolada, não interfere nas outras partições ! 
+
+Sempre lembrar: Primeiro é preciso particionar(fdisk) e depois formatar(mkfs) , não se esquece de montar(mount)! 
+
+2.PARTICIONAMENTO DO DISCO ! 
+
+Partições padroẽs: 
+dos/MBR(master boot record) -> antigo, caindo em desuso, apenas pode criar 4 partições primárias, porém com a última partição é possível 
+criar mais partições lógicas ! 
+
+GPT (GUID Partition Table) -> atual, recomendável, pois pode criar mais de 128 partições !
+
+No linux as partições ficam em -> /dev/'partição'
+sd -> disco SATA
+hd -> disco IDE
+
+Geralmente a primeira partição é pequena , pois armazena o 'bootloader'(grub) programa que fica responsável pelo 'boot' do sistema ! 
+Programa usado para preparar o dispositivo(terreno) é o fdisk (cli)!
+
+Para ver as partições:
+sudo fdisk -l 
+cat /proc/partitions
+
+3.MONTAGEM
+
+Montar um dispositivo é importante pois o usuário vai poder acessar o dispositivo e seu conteúdo ! 
+
+Com o comando mount é possível ver todas as partições montandas ! 
+
+Para montar -> mount (dispositivo) (lugar)
+Para desmontar -> umount (dispositivo)
+
+4.SISTEMA DE ARQUIVOS 
+
+Para verificar quais os sistema de arquivos sua máquina suporta, digite:
+cat /proc/filesystems
+
+É importante lembrar que o usuário pode 'adicionar' mais sistemas de arquivos através de módulos de kernel(modprobe).
+
+O linux tem um estrutura de diretórios interessante, pois é como se fosse uma árvore de cabeça para baixo e também tem um hierarquia ! 
+
+Outra característica é que os arquivos tem locais pré-definidos, os arquivos de logs tem uma pasta específica , os usuários também , arquivos de con-
+figuração , ....
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
