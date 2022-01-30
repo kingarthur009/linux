@@ -4,6 +4,7 @@
 
 O kernel é uns dos componentes principais do sistema operacional, principalmente o Linux ! 
 Ele é a ponte de comunicação entre o hardware e o processos executados na sua máquina ! (estabelece a comunicação)
+Sem ter um kernel nada funciona ! 
 
 O KERNEL tem 4 funções:
 - 1.Gerenciamento da memória -> 
@@ -24,56 +25,45 @@ O KERNEL tem 4 funções:
  PROCESSOS -> programas executados pelo o usuário que quem gerencia é o kernel l
  KERNEL -> software que reside na memória e instrui o que a CPU deve fazer 
  
- Processo de execução do kernel -> 
- 1.Modo do kernel -> o código tem acesso total ão hardware é a memória de referencia.
- 2.Modo usuário -> o acesso fica restrito a CPU e a memória SCI.
- 
  Kernel monolítico, ou seja, um bloco único onde estão compilados todos os serviços disponibilizados pelo sistema. 
- 
- 
  
  O shell é um interpretador de comandos que atua como interface entre o kernel e o usuário através do terminal. 
  
- 2. DIRETÓRIO /BOOT/
+ Para alterar o kernel o usuário precisa recompilar , assim ele pode tirar ou colocar módulos ou colocar até mesmo o initrd dentro do kernel ! 
  
- O kernel fica armazenado em -> /boot/vmlinu*
+ Módulos é como se fosse um driver que pode ser carregado ou descarregado, como o kernel em execução e sem precisar dar reboot ! (espaço do kernel)
+
+ O firmware é um componente eletronico embarcado em um hardware, esse componente tem instruções de inicar , e executar instruções quando o hardware principal for 
+ requisitado ! 
+ Alguns dispositivo precisam ter um firmware para que ele se comunique com os outros dispositivos ! 
  
- A última letra 'z' indica que o kernel está compactado ! 
+ O usuário pode automatizar o carregamento ou descarregamento do módulo na inicialização da máquina ! -> /etc/modprobe.d/
  
- 3 Arquivos importantes:
- config-* -> diz para o kernel quais módulos e opcões carregar
- initrd.img-* -> disco ram(virtual) que extrai e executa o arquivo real do kernel 
- System.map-* ->  usado para gerenciamento de memória, antes do carregamento do kernel.
+ 2. COMANDOS 
  
- Módulos -> O Kernel usa os módulos para ativar os drivers necessários para se comunicar com o hardware ! 
+ modprobe ou insmod 
  
- Entende-se por módulos as funções, os processos, os drivers, etc, ou seja, tudo aquilo que não faz parte do código do kernel. 
- 
- Os módulos serão carregados somente quando forem necessárias ! 
-  
- O linux não carrega todos os drivers na memória durante a inicialização, o usuário pode carregar em outro momento ! 
- 
- Uma versão de kernel não pode utilizar os módulos de outra versão, ou vice versa, portanto, devem existir em /lib/modules e /boot tantos diretórios de módulos, 
- quantas forem as versões de kernel que forem compiladas. 
- 
- 4. COMANDOS 
- 
- lsmod ou cat/proc/modules -> lista todos os módulos 
- 
- modprobe (mod) -> carrega o módulo eas depedências caso existir! 
- insmod (mod) 
- 
- modprobe -r (mod) -> remove os módulos e as depedências !
- rmmod (mod)
- 
- modinfo (mod) -> mostra as informações sobre o módulo !
- 
- Os módulos ficam armazenados em -> /lib/modules/
- /lib/modules/5.4.0-96-generic/kernel/drivers -> onde ficam propriamente dito os drivers ! 
- 
- depmod -a -> atualizar o arquivo  modules.dep
+ modprobe -r ou rmmod 
  
  modinfo 
+ 
+ lsmod 
+ 
+ cat /proc/modules 
+ 
+ /lib/modules/5.13.0-27-generic
+ 
+ sudo depmod -a  
+ 
+ arquivos -> *.ko
+ 
+ 
+ 
+ 
+ 
+
+ 
+
  
 
  
