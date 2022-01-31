@@ -1,0 +1,57 @@
+1. INTRODUÇÃO 
+
+O linux é multi-tarefa, ou seja , a máquina pode executar vários serviços ão mesmo tempo !   
+
+O Linux tem ferramentas para monitorar e gerenciar os processos.
+
+Cada processo tem acesso a recursos do sistema, dependendo da conta e do grupo ! 
+
+Cada processo é uma instância em execução. 
+Processo: 
+- ID
+- usuário
+- grupo 
+- PID
+
+Lembrando que o shell faz a ponte entre o kernel e o usuário(processos) ! 
+
+2. Listando Processos
+
+ps -ef ou ps aux 
+
+3. Comando TOP 
+
+top:
+u -> usuário
+r -> renice 
+k -> kill
+space -> espaço 
+m -> mostra a memória
+M -> ordenar pela memória
+1 -> mostra todas as cpu 
+
+3. PROCESSOS EM PRIMEIRO E SEGUNDO PLANO 
+
+Para colocar os processos em 2 plano adicione o -> & (e comercial) ! 
+
+CTRL + Z -> faz parar o processo
+
+O comando jobs ou jobs -l mostra o estado do processo ! 
+
+fg -> colocar o processo em primeiro plano ! 
+bg -> cololar o processo em segundo plano ! 
+
+4. ELIMINANDO E REPRIORIZANDO PROCESSOS
+
+kill -l -> mostra todos os sinais 
+
+kill -> encerra o processo, default é 15
+
+killall 
+
+renice ->  altera o valor nice como o processo em execução !
+Quanto menor o valor nice mais acesso a cpu o processo terá. (-20 a 19)
+
+nice -> executar um comando com o valor nice alterado ! 
+
+
