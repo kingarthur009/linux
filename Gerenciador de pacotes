@@ -1,0 +1,40 @@
+1. INTRODUÇÃO 
+
+No ubuntu a sessão : 
+main: contém software que são distribuídos gratuitamente e apoiado pela equipe do Ubuntu. Grande parte deste software está disponível quando você instala o Ubuntu via CD-ROM (ou ISO).
+Restricted: contém software que é comum a muitos sistemas Linux, também tem suporte da equipe do Ubuntu, mas não podem ser licenciados como software livre.
+Universe: são pacotes que não podem ser licenciados como software livre. Os softwares universe não tem garantia de segurança e correção (cuidado ao utilizar).
+Multiverse: contém software que não atende o conceito de software livre. O software multiverse não tem nenhum suporte, e cabe a você determinar a validade do licenciamento, suporte, etc. 
+
+Para gerenciar pacotes '.deb' o usuário pode usar vários programas de gerenciadores de pacotes , como o apt , apt-get , synaptic ,...
+
+O arquivo -> /etc/apt/sources.list <- serve para adicionar repostótios ou eliminar ! 
+
+deb http://br.archive.ubuntu.com/ubuntu/ focal multiverse
+
+Indica que o pacote é .deb , depois mostra o link do repositório o nome da versão e a sessão que esta utilizando ! 
+
+Alguns logs ficam na pasta /var/log/apt
+
+2. COMANDOS 
+
+apt install () 
+
+apt install -d () -> baixa o pacote mais não instala
+
+apt-cache show () ou apt show 
+
+apt update 
+
+apt upgrade 
+
+apt clean -> limpa todos os pacotes.
+/var/cache/apt/archives
+
+apt autoclean -> limpa pacotes parcialmente baixados 
+
+apt remove 
+
+apt -f install -> Verifica as dependências e tenta corrigi-las
+
+apt --purge remove ()
